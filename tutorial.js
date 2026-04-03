@@ -31,7 +31,7 @@ const chapters = [
       { type: "p", text: "Choose a good username (can change it later)" },
       {
         type: "img",
-        src: "images/step1_create_account.png",
+        src: "images/step1_create_account.webp",
         alt: "Screenshot of GitHub sign-up page",
       },
       { type: "p", text: "Then log in with your created account" },
