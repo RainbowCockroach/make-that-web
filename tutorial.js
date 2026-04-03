@@ -105,6 +105,15 @@ const chapters = [
         type: "p",
         html: "Type my email in: <code>voidrainbowcockroach@gmail.com</code>, then click invite to add the dev to your repo",
       },
+      {
+        type: "p",
+        html: 'Then open tab [ Pages ], then in "Source" section choose "GitHub Actions"',
+      },
+      {
+        type: "img",
+        src: "images/step3_settings_deploy_page.png",
+        alt: "Add collaborator input email",
+      },
     ],
   },
 ];
