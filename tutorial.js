@@ -103,7 +103,7 @@ const chapters = [
       },
       {
         type: "p",
-        text: "Type my email in: <em>voidrainbowcockroach@gmail.com</em>, then click invite to add the dev to your repo",
+        html: "Type my email in: <code>voidrainbowcockroach@gmail.com</code>, then click invite to add the dev to your repo",
       },
     ],
   },

@@ -1,22 +1,22 @@
 /* ============================================
-   Make That Web — 8-Bit Pixel RPG
-   Deep forest, fireflies, retro pixel game
+   Make That Web — Retro Forest Reader
+   Deep forest, fireflies, readable retro feel
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
 
 /* --- Tokens --- */
 :root {
-  /* Forest palette - NES/SNES inspired */
+  /* Forest palette */
   --bg:             #0f2b1a;
   --bg-light:       #173822;
   --bg-lighter:     #1f4a2c;
-  --panel-bg:       #1a3320;
+  --panel-bg:       #162e1c;
   --panel-border:   #4a8c50;
   --panel-border-hi:#6bbd5e;
-  --text:           #d4e8c8;
-  --text-dim:       #7aaa6e;
-  --text-bright:    #e8f8dc;
+  --text:           #e2edd8;
+  --text-dim:       #9ac08d;
+  --text-bright:    #f2fae8;
   --gold:           #f0d060;
   --gold-dim:       #b89830;
   --gold-glow:      rgba(240,208,96,.25);
@@ -29,11 +29,10 @@
   --white:          #f8f8f0;
   --black:          #081008;
   --shadow:         0 4px 0 var(--black);
-  --font-pixel:     'Press Start 2P', monospace;
-  --font-body:      'Nunito', sans-serif;
-  --max-w:          740px;
+  --font:           'Comic Neue', cursive, sans-serif;
+  --max-w:          720px;
   --progress-h:     10px;
-  --px:             4px; /* pixel unit for borders */
+  --px:             3px;
 }
 
 /* --- Reset --- */
@@ -42,13 +41,12 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 20px;
-  image-rendering: pixelated;
 }
 
 body {
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.7;
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.8;
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
@@ -61,6 +59,17 @@ body > * {
   z-index: 1;
 }
 
+/* --- Inline code --- */
+code {
+  font-family: monospace;
+  font-size: .92em;
+  background: var(--bg-lighter);
+  border: 1px solid var(--panel-border);
+  padding: 2px 6px;
+  color: var(--gold);
+  user-select: all;
+}
+
 /* --- Links --- */
 a {
   color: var(--gold);
@@ -70,8 +79,8 @@ a {
 }
 
 a:hover {
-  color: var(--gold-bright);
-  border-bottom-color: var(--gold-bright);
+  color: var(--text-bright);
+  border-bottom-color: var(--gold);
 }
 
 a:active {
@@ -100,14 +109,13 @@ a:active {
   width: var(--px);
   height: var(--px);
   background: var(--gold);
+  border-radius: 0;
   box-shadow:
     0 0 4px 2px var(--gold-glow),
     0 0 10px 4px rgba(240,208,96,.12);
   animation: fireflyGlow var(--glow-dur, 3s) ease-in-out infinite,
              fireflyDrift var(--drift-dur, 12s) linear infinite;
   opacity: 0;
-  /* Square pixel fireflies */
-  border-radius: 0;
 }
 
 .firefly:nth-child(1)  { left: 8%;  top: 18%; --glow-dur: 2.8s; --drift-dur: 14s; animation-delay: 0s, 0s; }
@@ -137,26 +145,16 @@ a:active {
   100% { transform: translate(0, 0); }
 }
 
-/* === 8-Bit Panel === */
-/* Double-border pixel panel like classic RPG dialog boxes */
+/* === Retro Panel === */
 .rpg-panel {
   background: var(--panel-bg);
   border: var(--px) solid var(--panel-border);
-  outline: var(--px) solid var(--bg);
-  outline-offset: calc(-1 * var(--px));
+  border-radius: 4px;
   box-shadow:
-    inset 0 0 0 calc(var(--px) * 2) var(--panel-bg),
-    inset 0 0 0 calc(var(--px) * 3) var(--panel-border),
+    inset 0 0 0 calc(var(--px) + 1px) var(--panel-bg),
+    inset 0 0 0 calc(var(--px) * 2 + 1px) var(--panel-border),
     0 var(--px) 0 0 var(--black);
   color: var(--text);
-  /* Pixel-perfect corners */
-  border-radius: 0;
-}
-
-/* Remove the old ornamental corners */
-.rpg-panel::before,
-.rpg-panel::after {
-  display: none;
 }
 
 /* --- Progress Bar (HP bar) --- */
@@ -168,18 +166,18 @@ a:active {
   height: var(--progress-h);
   background: var(--black);
   z-index: 1000;
-  border-bottom: var(--px) solid var(--moss);
+  border-bottom: 2px solid var(--moss);
 }
 
 .progress-fill {
   height: 100%;
   width: 0%;
   background: var(--hp-green);
-  box-shadow: inset 0 calc(var(--px) * -1) 0 var(--hp-dark);
+  box-shadow: inset 0 -2px 0 var(--hp-dark);
   transition: width .15s steps(20);
 }
 
-/* Segmented HP bar look */
+/* Segmented HP bar */
 .progress-track::after {
   content: '';
   position: absolute;
@@ -189,7 +187,7 @@ a:active {
     transparent 0px,
     transparent 6px,
     var(--black) 6px,
-    var(--black) 8px
+    var(--black) 7px
   );
   pointer-events: none;
 }
@@ -198,16 +196,17 @@ a:active {
 .hero {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 52px 24px 40px;
+  padding: 60px 24px 44px;
   text-align: center;
 }
 
 .hero-badge {
   display: inline-block;
-  font-family: var(--font-pixel);
-  font-size: .5rem;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: .8rem;
   text-transform: uppercase;
-  letter-spacing: .08em;
+  letter-spacing: .1em;
   color: var(--gold);
   background: var(--bg-light);
   border: 2px solid var(--gold-dim);
@@ -223,11 +222,12 @@ a:active {
 }
 
 .hero h1 {
-  font-family: var(--font-pixel);
-  font-size: clamp(.85rem, 2.5vw, 1.15rem);
-  line-height: 2;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 1.4;
   color: var(--text-bright);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   text-shadow: 2px 2px 0 var(--black);
 }
 
@@ -238,9 +238,10 @@ a:active {
 
 .hero p {
   color: var(--text-dim);
-  font-size: .95rem;
+  font-size: 1rem;
   max-width: 500px;
   margin: 0 auto;
+  line-height: 1.7;
 }
 
 /* --- Preview Card --- */
@@ -256,8 +257,9 @@ a:active {
 }
 
 .preview-inner .preview-label {
-  font-family: var(--font-pixel);
-  font-size: .45rem;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: .8rem;
   text-transform: uppercase;
   letter-spacing: .1em;
   color: var(--text-dim);
@@ -275,7 +277,7 @@ a:active {
 
 .preview-inner .preview-caption {
   margin-top: 14px;
-  font-size: .8rem;
+  font-size: .9rem;
   color: var(--text-dim);
   font-style: italic;
 }
@@ -307,35 +309,32 @@ a:active {
   gap: 6px;
   text-decoration: none;
   color: var(--text-dim);
-  transition: color .15s;
+  transition: color .2s;
 }
 
 .overview-pip:hover { color: var(--gold); }
 
 .pip-dot {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   background: var(--bg);
-  border: 2px solid var(--panel-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-pixel);
-  font-size: .45rem;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: .85rem;
   color: var(--text-dim);
   transition: all .15s;
   flex-shrink: 0;
-  border-radius: 50%;
-  /* 8-petal flower via clip-path */
+  /* 8-petal flower */
   clip-path: polygon(
     50% 0%, 63% 13%, 75% 2%, 82% 18%, 98% 18%, 87% 32%,
     100% 50%, 87% 68%, 98% 82%, 82% 82%, 75% 98%, 63% 87%,
     50% 100%, 37% 87%, 25% 98%, 18% 82%, 2% 82%, 13% 68%,
     0% 50%, 13% 32%, 2% 18%, 18% 18%, 25% 2%, 37% 13%
   );
-  /* Since clip-path clips the border, fake it with box-shadow */
   border: none;
-  box-shadow: none;
 }
 
 .pip-dot span {
@@ -348,10 +347,11 @@ a:active {
 }
 
 .pip-label {
-  font-family: var(--font-pixel);
-  font-size: .35rem;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: .55rem;
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.4;
   text-transform: uppercase;
 }
 
@@ -385,8 +385,8 @@ a:active {
 
 .chapter:hover {
   box-shadow:
-    inset 0 0 0 calc(var(--px) * 2) var(--panel-bg),
-    inset 0 0 0 calc(var(--px) * 3) var(--panel-border),
+    inset 0 0 0 calc(var(--px) + 1px) var(--panel-bg),
+    inset 0 0 0 calc(var(--px) * 2 + 1px) var(--panel-border),
     0 var(--px) 0 0 var(--black),
     0 0 16px rgba(74,140,80,.15);
 }
@@ -394,8 +394,8 @@ a:active {
 .chapter[open] {
   border-color: var(--panel-border-hi);
   box-shadow:
-    inset 0 0 0 calc(var(--px) * 2) var(--panel-bg),
-    inset 0 0 0 calc(var(--px) * 3) var(--panel-border-hi),
+    inset 0 0 0 calc(var(--px) + 1px) var(--panel-bg),
+    inset 0 0 0 calc(var(--px) * 2 + 1px) var(--panel-border-hi),
     0 var(--px) 0 0 var(--black),
     0 0 20px rgba(107,189,94,.1);
 }
@@ -418,17 +418,19 @@ a:active {
 .chapter summary::-webkit-details-marker { display: none; }
 
 .chapter-number {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-pixel);
-  font-size: .6rem;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: .9rem;
   color: var(--panel-border-hi);
   flex-shrink: 0;
   transition: all .15s;
+  /* 8-petal flower */
   clip-path: polygon(
     50% 0%, 63% 13%, 75% 2%, 82% 18%, 98% 18%, 87% 32%,
     100% 50%, 87% 68%, 98% 82%, 82% 82%, 75% 98%, 63% 87%,
@@ -452,17 +454,18 @@ a:active {
 }
 
 .chapter-title {
-  font-family: var(--font-pixel);
-  font-size: .6rem;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 1.05rem;
   color: var(--text-bright);
-  line-height: 1.8;
+  line-height: 1.5;
   text-shadow: 1px 1px 0 var(--black);
 }
 
 .chapter-subtitle {
-  font-size: .78rem;
+  font-size: .9rem;
   color: var(--text-dim);
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .chapter-chevron {
@@ -480,10 +483,12 @@ a:active {
 
 /* Chapter Body */
 .chapter-body {
-  padding: 0 20px 20px;
-  padding-left: 72px;
+  padding: 4px 20px 22px;
+  padding-left: 70px;
   animation: chapterReveal .2s steps(4);
   color: var(--text);
+  font-size: 1rem;
+  line-height: 1.85;
 }
 
 @keyframes chapterReveal {
@@ -516,20 +521,21 @@ a:active {
   border-left: var(--px) solid var(--hp-green);
   padding: 12px 16px;
   margin: 14px 0;
-  font-size: .88rem;
+  font-size: .95rem;
 }
 
 .callout strong {
-  font-family: var(--font-pixel);
-  font-size: .4rem;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: .8rem;
   text-transform: uppercase;
-  letter-spacing: .06em;
+  letter-spacing: .04em;
   color: var(--hp-green);
   text-shadow: 1px 1px 0 var(--black);
 }
 
 .callout.callout-warn {
-  background: rgba(208,64,64,.08);
+  background: rgba(208,64,64,.06);
   border-left-color: var(--berry);
 }
 
@@ -545,8 +551,9 @@ a:active {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-pixel);
-  font-size: .45rem;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: .85rem;
   text-transform: uppercase;
   letter-spacing: .04em;
   color: var(--text-dim);
@@ -569,7 +576,7 @@ a:active {
   border: 2px solid var(--panel-border);
   color: var(--panel-border-hi);
   font-size: .65rem;
-  font-family: var(--font-body);
+  font-family: var(--font);
   transition: all .15s;
 }
 
@@ -588,22 +595,23 @@ a:active {
 }
 
 .completion-inner {
-  padding: 32px 24px;
+  padding: 36px 24px;
   text-align: center;
 }
 
 .completion-inner h2 {
-  font-family: var(--font-pixel);
-  font-size: .7rem;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 1.3rem;
   color: var(--gold);
   margin-bottom: 12px;
+  line-height: 1.4;
   text-shadow: 2px 2px 0 var(--black);
-  line-height: 2;
 }
 
 .completion-inner p {
   color: var(--text-dim);
-  font-size: .88rem;
+  font-size: 1rem;
 }
 
 /* --- Footer --- */
@@ -616,12 +624,11 @@ a:active {
 }
 
 .site-footer p {
-  font-family: var(--font-pixel);
-  font-size: .35rem;
+  font-family: var(--font);
+  font-size: .75rem;
   color: var(--text-dim);
   opacity: .35;
   letter-spacing: .04em;
-  text-transform: uppercase;
 }
 
 /* --- Lightbox --- */
@@ -696,10 +703,8 @@ a:active {
   bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: var(--font-pixel);
-  font-size: .35rem;
-  letter-spacing: .04em;
-  text-transform: uppercase;
+  font-family: var(--font);
+  font-size: .7rem;
   color: var(--text-dim);
   opacity: .3;
   pointer-events: none;
@@ -714,7 +719,7 @@ a:active {
 
 /* --- Scrollbar --- */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg);
@@ -733,8 +738,10 @@ a:active {
     --progress-h: 8px;
   }
 
-  .hero { padding: 32px 12px 28px; }
-  .hero h1 { font-size: .7rem; }
+  body { font-size: 16px; }
+
+  .hero { padding: 36px 14px 28px; }
+  .hero h1 { font-size: 1.3rem; }
 
   .preview-inner { padding: 16px; }
 
@@ -742,13 +749,13 @@ a:active {
     padding: 10px 12px;
     gap: 2px;
   }
-  .pip-dot { width: 26px; height: 26px; font-size: .35rem; }
-  .pip-label { font-size: .3rem; }
+  .pip-dot { width: 34px; height: 34px; font-size: .75rem; }
+  .pip-label { font-size: .45rem; }
   .overview-connector { width: 8px; }
 
   .chapter summary { padding: 14px 16px; gap: 10px; }
-  .chapter-number { width: 34px; height: 34px; font-size: .5rem; }
-  .chapter-title { font-size: .5rem; }
+  .chapter-number { width: 34px; height: 34px; font-size: .8rem; }
+  .chapter-title { font-size: .95rem; }
   .chapter-body {
     padding: 0 16px 16px;
     padding-left: 16px;
@@ -761,7 +768,7 @@ a:active {
   .site-footer { padding-left: 12px; padding-right: 12px; }
 
   .completion-inner { padding: 22px 16px; }
-  .completion-inner h2 { font-size: .55rem; }
+  .completion-inner h2 { font-size: 1.1rem; }
 }
 
 @media (max-width: 380px) {

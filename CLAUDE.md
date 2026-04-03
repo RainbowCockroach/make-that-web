@@ -18,10 +18,10 @@ Plain HTML/CSS/JS — no build tools, no frameworks, no static site generator.
 
 ## Design Direction
 
-- **Aesthetic**: 8-bit retro pixel RPG game, deep emerald forest background, firefly animations
-- **Fonts**: Press Start 2P (pixel UI labels/titles), Nunito (body text readability)
-- **Panels**: Double-border pixel-perfect RPG dialog boxes (`.rpg-panel` class)
-- **Shapes**: Flower-shaped `clip-path` for chapter numbers and progress pips (not diamonds/circles)
+- **Aesthetic**: Retro RPG feel with emerald forest background and firefly animations, but readable
+- **Fonts**: Comic Neue for everything (friendly Comic Sans-like font, readable at all sizes)
+- **Panels**: Double-border retro panels with slight rounding (`.rpg-panel` class)
+- **Shapes**: Flower-shaped `clip-path` for chapter numbers and progress pips
 - **Animations**: Use CSS `steps()` timing for retro feel
 - **No nav bar** — content flows directly from hero
 
