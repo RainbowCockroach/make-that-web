@@ -7,27 +7,27 @@
 
 /* --- Tokens --- */
 :root {
-  /* Forest palette */
-  --bg:             #0f2b1a;
-  --bg-light:       #173822;
-  --bg-lighter:     #1f4a2c;
-  --panel-bg:       #162e1c;
-  --panel-border:   #4a8c50;
-  --panel-border-hi:#6bbd5e;
-  --text:           #e2edd8;
-  --text-dim:       #9ac08d;
-  --text-bright:    #f2fae8;
-  --gold:           #f0d060;
-  --gold-dim:       #b89830;
-  --gold-glow:      rgba(240,208,96,.25);
-  --hp-green:       #58b848;
-  --hp-dark:        #2a7828;
-  --moss:           #3a6830;
-  --bark:           #5c4830;
-  --bark-dark:      #3a2e1c;
-  --berry:          #d04040;
-  --white:          #f8f8f0;
-  --black:          #081008;
+  /* Pastel meadow green */
+  --bg:             #f4faf2;
+  --bg-light:       #e8f4e4;
+  --bg-lighter:     #d8ecd2;
+  --panel-bg:       #eef7eb;
+  --panel-border:   #b8d8a8;
+  --panel-border-hi:#8cc07a;
+  --text:           #2e4028;
+  --text-dim:       #6a8a60;
+  --text-bright:    #1c2e18;
+  --gold:           #5a9a48;
+  --gold-dim:       #a8ceaa;
+  --gold-glow:      rgba(90,154,72,.15);
+  --hp-green:       #a0d090;
+  --hp-dark:        #88c078;
+  --moss:           #b8d8a8;
+  --bark:           #a8c8a0;
+  --bark-dark:      #c8dcc4;
+  --berry:          #d07050;
+  --white:          #f8fcf6;
+  --black:          rgba(30,50,20,.10);
   --shadow:         0 4px 0 var(--black);
   --font:           'Comic Neue', cursive, sans-serif;
   --max-w:          720px;
@@ -108,10 +108,10 @@ a:active {
   position: absolute;
   width: var(--px);
   height: var(--px);
-  background: var(--gold);
+  background: #f0d060;
   border-radius: 0;
   box-shadow:
-    0 0 4px 2px var(--gold-glow),
+    0 0 4px 2px rgba(240,208,96,.25),
     0 0 10px 4px rgba(240,208,96,.12);
   animation: fireflyGlow var(--glow-dur, 3s) ease-in-out infinite,
              fireflyDrift var(--drift-dur, 12s) linear infinite;
@@ -349,7 +349,7 @@ a:active {
 .pip-label {
   font-family: var(--font);
   font-weight: 700;
-  font-size: .55rem;
+  font-size: .7rem;
   text-align: center;
   line-height: 1.4;
   text-transform: uppercase;
@@ -388,7 +388,7 @@ a:active {
     inset 0 0 0 calc(var(--px) + 1px) var(--panel-bg),
     inset 0 0 0 calc(var(--px) * 2 + 1px) var(--panel-border),
     0 var(--px) 0 0 var(--black),
-    0 0 16px rgba(74,140,80,.15);
+    0 0 16px rgba(140,192,122,.15);
 }
 
 .chapter[open] {
@@ -397,7 +397,7 @@ a:active {
     inset 0 0 0 calc(var(--px) + 1px) var(--panel-bg),
     inset 0 0 0 calc(var(--px) * 2 + 1px) var(--panel-border-hi),
     0 var(--px) 0 0 var(--black),
-    0 0 20px rgba(107,189,94,.1);
+    0 0 20px rgba(140,192,122,.1);
 }
 
 .chapter summary {
@@ -445,7 +445,7 @@ a:active {
 
 .chapter[open] .chapter-number {
   background: var(--hp-green);
-  color: var(--black);
+  color: #1c2e18;
 }
 
 .chapter-header-text {
@@ -512,12 +512,12 @@ a:active {
 .chapter-body .step-image:hover {
   box-shadow:
     var(--px) var(--px) 0 var(--black),
-    0 0 12px rgba(107,189,94,.15);
+    0 0 12px rgba(140,192,122,.15);
 }
 
 /* Callouts */
 .callout {
-  background: rgba(74,140,80,.1);
+  background: rgba(140,192,122,.1);
   border-left: var(--px) solid var(--hp-green);
   padding: 12px 16px;
   margin: 14px 0;
@@ -535,7 +535,7 @@ a:active {
 }
 
 .callout.callout-warn {
-  background: rgba(208,64,64,.06);
+  background: rgba(208,112,80,.06);
   border-left-color: var(--berry);
 }
 
@@ -635,7 +635,7 @@ a:active {
 .lightbox-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(8,16,8,.95);
+  background: rgba(30,50,20,.85);
   z-index: 10000;
   display: flex;
   align-items: center;
@@ -667,7 +667,7 @@ a:active {
   max-height: 92vh;
   object-fit: contain;
   border: var(--px) solid var(--panel-border);
-  box-shadow: 0 0 40px rgba(74,140,80,.15);
+  box-shadow: 0 0 40px rgba(140,192,122,.15);
   transform-origin: center center;
   transition: transform .1s ease-out;
   user-select: none;
@@ -714,7 +714,7 @@ a:active {
 /* --- Selection --- */
 ::selection {
   background: var(--hp-green);
-  color: var(--black);
+  color: var(--white);
 }
 
 /* --- Scrollbar --- */
@@ -750,7 +750,7 @@ a:active {
     gap: 2px;
   }
   .pip-dot { width: 34px; height: 34px; font-size: .75rem; }
-  .pip-label { font-size: .45rem; }
+  .pip-label { font-size: .55rem; }
   .overview-connector { width: 8px; }
 
   .chapter summary { padding: 14px 16px; gap: 10px; }
@@ -772,6 +772,6 @@ a:active {
 }
 
 @media (max-width: 380px) {
-  .pip-label { display: none; }
+  .pip-label { font-size: .5rem; }
   .overview-connector { width: 4px; }
 }
