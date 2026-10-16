@@ -75,7 +75,7 @@ const chapters = [
     body: [
       {
         type: "p",
-        text: "After creating, you will be redirect to the repo page. If not, you can always find it in the repo list (the book icon at the top right of the screen)",
+        text: "After creating, you will be redirect to the repo page. If not, try find it in the repo list (the book icon at the top right of the screen)",
       },
       {
         type: "p",
@@ -98,6 +98,11 @@ const chapters = [
       {
         type: "p",
         html: "Type my email in: <code>voidrainbowcockroach@gmail.com</code>, then click invite to add the dev to your repo",
+      },
+      {
+        type: "img",
+        src: "images/step3_invite_rainbow_roachie.webp",
+        alt: "Invite rainbow roachie to repo",
       },
       {
         type: "p",
