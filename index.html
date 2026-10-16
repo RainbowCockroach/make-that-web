@@ -3,63 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
     <title>First steps</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Fireflies -->
-    <div class="fireflies">
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-    </div>
+    <main class="page">
+      <p class="meta">To set up so the dev can code stuff.</p>
+      <p>You will need a computer. Click on any picture to see it bigger.</p>
 
-    <!-- Progress Bar -->
-    <div class="progress-track"><div class="progress-fill"></div></div>
+      <nav class="toc" aria-label="Contents"></nav>
 
-    <!-- Hero -->
-    <header class="hero">
-      <h1><em>First steps</em></h1>
-      <p>A few set up for the dev to code stuff.</p>
-      <p>Need a computer.</p>
-      <p>Click on the image to view them big.</p>
-    </header>
+      <div class="chapters"></div>
 
-    <!-- Chapter Progress Overview (generated from chapters.js) -->
-    <nav class="chapter-overview" aria-label="Chapter progress">
-      <div class="overview-bar"></div>
-    </nav>
-
-    <!-- Chapters (generated from chapters.js) -->
-    <main class="chapters"></main>
-
-    <!-- Completion Banner -->
-    <section class="completion-banner">
-      <div class="completion-inner rpg-panel">
-        <div class="hero-badge">DONE!</div>
-        <p>Now the dev can code stuff for you.</p>
-        <p>Tell the dev that you're done setting up.</p>
-      </div>
-    </section>
-
-    <!-- Lightbox Overlay -->
-    <div class="lightbox-overlay">
-      <button class="lightbox-close" aria-label="Close">&times;</button>
-      <div class="lightbox-img-wrap">
-        <img src="" alt="" />
-      </div>
-      <span class="lightbox-hint"
-        >Scroll to zoom &middot; Drag to pan &middot; Click outside to
-        close</span
-      >
-    </div>
+      <h2>Done!</h2>
+      <p>
+        Now the dev can code stuff for you. Tell the dev that you're done
+        setting up.
+      </p>
+    </main>
 
     <script src="tutorial.js"></script>
     <script src="script.js"></script>

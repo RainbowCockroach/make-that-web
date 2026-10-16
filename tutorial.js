@@ -6,8 +6,6 @@
    Each chapter has:
      title       — chapter heading
      subtitle    — optional line under the title (omit or set to null)
-     navLabel    — short label for the top overview bar
-     open        — set true to have it expanded on load (usually just chapter 1)
      body        — array of content blocks (see types below)
 
    Body block types:
@@ -21,8 +19,6 @@
 const chapters = [
   {
     title: "Create a GitHub account",
-    navLabel: "Create account",
-    open: true,
     body: [
       {
         type: "p",
@@ -39,8 +35,7 @@ const chapters = [
   },
   {
     title: "Create the repository",
-    subtitle: 'Fancy dev way of calling a "folder"',
-    navLabel: "Create repo",
+    subtitle: 'Fancy dev way of calling a "code folder"',
     body: [
       {
         type: "p",
@@ -77,7 +72,6 @@ const chapters = [
   },
   {
     title: "The settings stuff",
-    navLabel: "Settings",
     body: [
       {
         type: "p",
